@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Daily Level Up</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     FIRST TIME SETUP
+================================================== -->
+
+<section id="setupScreen" class="setup-screen">
+
+  <div class="setup-box">
+
+    <p class="setup-small">
+      30 DAY TRANSFORMATION
+    </p>
+
+    <h1>
+      DAILY LEVEL UP
+    </h1>
+
+    <p class="setup-subtitle">
+      BUILD YOUR 30 DAY JOURNEY
+    </p>
+
+
+    <!-- NAME -->
+
+    <div class="setup-input">
+
+      <label>
+        YOUR NAME
+      </label>
+
+      <input
+        type="text"
+        id="profileName"
+        placeholder="Enter your name">
+
+    </div>
+
+
+    <!-- START DATE -->
+
+    <div class="setup-input">
+
+      <label>
+        STARTING DATE
+      </label>
+
+      <input
+        type="date"
+        id="startDate">
+
+    </div>
+
+
+    <!-- WEIGHT -->
+
+    <div class="setup-row">
+
+      <div class="setup-input">
+
+        <label>
+          WEIGHT
+        </label>
+
+        <input
+          type="number"
+          id="profileWeight"
+          placeholder="70"
+          min="0"
+          step="0.1">
+
+        <small>
+          KG
+        </small>
+
+      </div>
+
+
+      <!-- HEIGHT -->
+
+      <div class="setup-input">
+
+        <label>
+          HEIGHT
+        </label>
+
+        <input
+          type="number"
+          id="profileHeight"
+          placeholder="170"
+          min="0"
+          step="0.1">
+
+        <small>
+          CM
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="startTrackerBtn"
+      class="start-btn">
+
+      START 30 DAYS 🔥
+
+    </button>
+
+
+    <p class="setup-note">
+      Your information is saved only in this browser.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     MAIN TRACKER
+================================================== -->
+
+<div id="trackerScreen" class="hidden">
+
+
+  <!-- HEADER -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <p class="small-title">
+        30 DAY TRANSFORMATION
+      </p>
+
+      <h1>
+        DAILY LEVEL UP
+      </h1>
+
+      <p class="subtitle">
+        TRAIN • TRACK • IMPROVE
+      </p>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+
+    <!-- PROFILE -->
+
+    <section class="profile-card">
+
+      <div>
+
+        <span>
+          LEVELING UP
+        </span>
+
+        <h2 id="profileNameDisplay">
+          —
+        </h2>
+
+      </div>
+
+
+      <div class="profile-stats">
+
+        <div>
+          <small>WEIGHT</small>
+          <strong id="weightDisplay">—</strong>
+        </div>
+
+        <div>
+          <small>HEIGHT</small>
+          <strong id="heightDisplay">—</strong>
+        </div>
+
+      </div>
+
+
+      <button
+        id="settingsBtn"
+        class="settings-btn">
+
+        ⚙ SETTINGS
+
+      </button>
+
+    </section>
+
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-card">
+
+      <div class="progress-top">
+
+        <div>
+
+          <span class="label">
+            CURRENT DAY
+          </span>
+
+          <h2>
+
+            DAY
+
+            <span id="currentDayText">
+              1
+            </span>
+
+            <span class="muted">
+              / 30
+            </span>
+
+          </h2>
+
+        </div>
+
+
+        <div class="progress-percent">
+
+          <span id="progressPercent">
+            0%
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-bar">
+
+        <div id="progressFill"></div>
+
+      </div>
+
+
+      <p id="progressText">
+        0 of 30 days completed
+      </p>
+
+    </section>
+
+
+
+    <!-- DAY NAVIGATION -->
+
+    <section class="day-navigation">
+
+      <button
+        id="previousBtn"
+        class="nav-btn">
+
+        ◀ PREVIOUS
+
+      </button>
+
+
+      <div class="day-display">
+
+        <span>
+          DAY
+        </span>
+
+        <strong id="selectedDay">
+          1
+        </strong>
+
+      </div>
+
+
+      <button
+        id="nextBtn"
+        class="nav-btn">
+
+        NEXT ▶
+
+      </button>
+
+    </section>
+
+
+
+    <!-- DATE -->
+
+    <section class="date-card">
+
+      <div>
+
+        <span class="label">
+          TRACKING DATE
+        </span>
+
+        <h2 id="dateDisplay">
+          —
+        </h2>
+
+      </div>
+
+
+      <div
+        class="status"
+        id="dayStatus">
+
+        NOT COMPLETED
+
+      </div>
+
+    </section>
+
+
+
+    <!-- WORKOUT -->
+
+    <section class="card">
+
+      <div class="section-title">
+
+        <div class="icon">
+          🏋️
+        </div>
+
+        <div>
+
+          <h2>
+            WORKOUT TRACKER
+          </h2>
+
+          <p>
+            Record your exercises and sets
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="workout-form">
+
+
+        <div class="input-group workout-input">
+
+          <label>
+            WHAT WORKOUT?
+          </label>
+
+          <input
+            type="text"
+            id="workoutName"
+            placeholder="Bench Press">
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            SET 1
+          </label>
+
+          <input
+            type="number"
+            id="set1"
+            placeholder="12"
+            min="0">
+
+          <small>
+            REPS
+          </small>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            SET 2
+          </label>
+
+          <input
+            type="number"
+            id="set2"
+            placeholder="10"
+            min="0">
+
+          <small>
+            REPS
+          </small>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            SET 3
+          </label>
+
+          <input
+            type="number"
+            id="set3"
+            placeholder="8"
+            min="0">
+
+          <small>
+            REPS
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="primary-btn"
+        id="addWorkoutBtn">
+
+        + ADD WORKOUT
+
+      </button>
+
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>WORKOUT</th>
+              <th>SET 1</th>
+              <th>SET 2</th>
+              <th>SET 3</th>
+              <th>ACTION</th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="workoutTable">
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- RUNNING -->
+
+    <section class="card">
+
+      <div class="section-title">
+
+        <div class="icon">
+          🏃
+        </div>
+
+        <div>
+
+          <h2>
+            RUNNING TRACKER
+          </h2>
+
+          <p>
+            Track your running performance
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="running-form">
+
+
+        <div class="input-group">
+
+          <label>
+            RUNNING
+          </label>
+
+          <select id="running">
+
+            <option value="YES">
+              YES
+            </option>
+
+            <option value="NO">
+              NO
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            DISTANCE
+          </label>
+
+          <input
+            type="number"
+            id="kilometres"
+            placeholder="5"
+            min="0"
+            step="0.1">
+
+          <small>
+            KM
+          </small>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            TIME TAKEN
+          </label>
+
+          <input
+            type="text"
+            id="runTime"
+            placeholder="30 min">
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="primary-btn"
+        id="saveRunBtn">
+
+        + SAVE RUN
+
+      </button>
+
+
+      <div class="running-result">
+
+
+        <div>
+
+          <span>
+            RUNNING
+          </span>
+
+          <strong id="runStatus">
+            —
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            DISTANCE
+          </span>
+
+          <strong id="runDistance">
+            —
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            TIME
+          </span>
+
+          <strong id="runTimeDisplay">
+            —
+          </strong>
+
+        </div>
+
+
+        <button
+          class="delete-btn"
+          id="deleteRunBtn">
+
+          DELETE
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SLEEP -->
+
+    <section class="card">
+
+      <div class="section-title">
+
+        <div class="icon">
+          😴
+        </div>
+
+        <div>
+
+          <h2>
+            SLEEP TRACKER
+          </h2>
+
+          <p>
+            Monitor your sleep
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="sleep-form">
+
+
+        <div class="input-group">
+
+          <label>
+            SLEEP HOURS
+          </label>
+
+          <input
+            type="number"
+            id="sleepHours"
+            placeholder="8"
+            min="0"
+            max="24"
+            step="0.5">
+
+          <small>
+            HOURS
+          </small>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            SLEEP QUALITY
+          </label>
+
+          <select id="sleepQuality">
+
+            <option value="">
+              SELECT
+            </option>
+
+            <option value="Excellent">
+              Excellent
+            </option>
+
+            <option value="Good">
+              Good
+            </option>
+
+            <option value="Average">
+              Average
+            </option>
+
+            <option value="Poor">
+              Poor
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="primary-btn"
+        id="saveSleepBtn">
+
+        + SAVE SLEEP
+
+      </button>
+
+
+      <div class="sleep-result">
+
+        <span>
+          SLEEP
+        </span>
+
+        <strong id="sleepDisplay">
+          —
+        </strong>
+
+        <span id="qualityDisplay">
+          —
+        </span>
+
+        <button
+          class="delete-btn"
+          id="deleteSleepBtn">
+
+          DELETE
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- COMPLETE -->
+
+    <button
+      class="complete-btn"
+      id="completeDayBtn">
+
+      ✓ COMPLETE DAY
+
+    </button>
+
+
+
+    <!-- HISTORY -->
+
+    <section class="card history-card">
+
+      <div class="section-title">
+
+        <div class="icon">
+          📅
+        </div>
+
+        <div>
+
+          <h2>
+            30 DAY HISTORY
+          </h2>
+
+          <p>
+            Tap any day to view previous records
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="history-grid"
+        id="historyGrid">
+
+      </div>
+
+    </section>
+
+
+
+    <!-- RESET -->
+
+    <section class="reset-section">
+
+      <button
+        type="button"
+        id="resetBtn"
+        class="reset-btn">
+
+        ⚠ RESET ALL 30 DAYS
+
+      </button>
+
+      <p>
+        Delete all workout, running,
+        sleep and progress data
+      </p>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>
+      DAILY LEVEL UP
+    </h2>
+
+    <p>
+      ONE DAY • ONE REP • ONE LEVEL UP
+    </p>
+
+  </footer>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
